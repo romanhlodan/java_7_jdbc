@@ -79,16 +79,11 @@ public class Main {
 
 
         long count = people.stream().count();
-        System.out.println(count);
         Person person = people.stream().findFirst().orElse(new Person(84, "xxx", 74, "dkdkcm@kfkfk", 5600, "euro"));
-        System.out.println(person);
         boolean b = people.stream().anyMatch(person1 -> person1.getAge() == 20);
-        System.out.println(b);
         boolean net = people.stream().noneMatch(person1 -> person1.getE_mail().endsWith("net"));
-        System.out.println(net);
         Person person1 = people.stream().min((o1, o2) -> o1.getSum() - o2.getSum()).get();
-        System.out.println(person1);
-        people.stream().
+
 
     }
 }
