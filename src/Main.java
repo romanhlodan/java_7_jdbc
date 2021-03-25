@@ -2,6 +2,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -65,7 +66,7 @@ public class Main {
         for (Person person : people) {
             System.out.println(person);
         }
-        System.out.println("_______________________-");
+//        System.out.println("_______________________-");
        List<Person> qwe  = people.stream()
                 .distinct()
                 .sorted((o1, o2) -> o1.getAge() - o2.getAge())
@@ -74,8 +75,20 @@ public class Main {
                 .sorted((o1, o2) -> o2.getSum() - o1.getSum())
                 .filter(person -> person.getE_mail().endsWith(".net"))
                 .collect(Collectors.toList());
+//        System.out.println(qwe);
 
-        System.out.println(qwe);
+
+        long count = people.stream().count();
+        System.out.println(count);
+        Person person = people.stream().findFirst().orElse(new Person(84, "xxx", 74, "dkdkcm@kfkfk", 5600, "euro"));
+        System.out.println(person);
+        boolean b = people.stream().anyMatch(person1 -> person1.getAge() == 20);
+        System.out.println(b);
+        boolean net = people.stream().noneMatch(person1 -> person1.getE_mail().endsWith("net"));
+        System.out.println(net);
+        Person person1 = people.stream().min((o1, o2) -> o1.getSum() - o2.getSum()).get();
+        System.out.println(person1);
+        people.stream().
 
     }
 }
